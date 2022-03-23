@@ -1,0 +1,6 @@
+print(3.14)
+print(3+14)
+print(3*(14+5))
+print(9%5)
+print(max(2, 3, 7, 5))
+print(min(9, 4, 8, 5))
