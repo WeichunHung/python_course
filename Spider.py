@@ -21,4 +21,4 @@ def getTitle(url):
     except HTTPError as e:
         return None
 
-getTitle("https://www.ptt.cc/bbs/NBA/index6508.html")
+getTitle("https://www.ptt.cc/bbs/index.html")

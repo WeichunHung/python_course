@@ -109,14 +109,6 @@ else: print("You can't play.")
 # Nested if 巢狀if
 """
 
-#The range() Function
-"""
-for x in range(200,301):
-
-  if x % 3 == 0 and x % 2 != 0:
-      print(x)
-"""
-
 age = "27"
 name = "Wei"
 print("My name is "+name+".\nI am "+age+" years old.")
