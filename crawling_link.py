@@ -14,11 +14,12 @@ def getLink(url):
         article_links = 'https://www.ettoday.net/' + ele.get('href')
         print('Article Link: ', article_links)
 
-        html = requests.get(article_links)
-        article_obj = BeautifulSoup(html.text, features="html.parser")
-        print(article_obj)
-        # suggest_2 = article_obj.find('div', {'class': 'part_list_3'})
-        # print(suggest_2)
+        first_article_link = 'https://www.ettoday.net/' + ele.get.find('a').get('href')
+        html = requests.get(first_article_link)
+        bs_obj_2 = BeautifulSoup(html.text, features="html.parser")
+        suggest_2 = bs_obj_2.find('div', {'class': 'part_list_3'})
+        sug_articles_2 = suggest_2.findAll('a')
+        print(sug_articles_2)
 
 
     for link in suggest.findAll('a'):
