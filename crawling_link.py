@@ -11,7 +11,7 @@ def getLink(url):
 
     for ele in sug_articles:
         print(ele.get('title'))
-        article_links = 'https://www.ptt.cc' + ele.get('href')
+        article_links = 'https://www.ettoday.net/' + ele.get('href')
         print('Article Link: ', article_links)
 
         html = requests.get(article_links)
@@ -22,7 +22,7 @@ def getLink(url):
 
 
     for link in suggest.findAll('a'):
-        print(set('https://www.ptt.cc' + link.get('href')))
+        print(set('https://www.ettoday.net/' + link.get('href')))
 
 
 
