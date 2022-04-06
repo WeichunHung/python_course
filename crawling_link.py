@@ -14,9 +14,15 @@ def getLink(url):
         article_links = 'https://www.ptt.cc' + ele.get('href')
         print('Article Link: ', article_links)
 
+        html = requests.get(article_links)
+        article_obj = BeautifulSoup(html.text, features="html.parser")
+        print(article_obj)
+        # suggest_2 = article_obj.find('div', {'class': 'part_list_3'})
+        # print(suggest_2)
+
+
     for link in suggest.findAll('a'):
         print(set('https://www.ptt.cc' + link.get('href')))
-
 
 
 
