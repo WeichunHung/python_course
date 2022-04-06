@@ -8,15 +8,16 @@ for x in range(200,301):
 '''
 
 # 題目2： 0-100 的質數
-"""
+
 for x in range(2,101):
     for y in range(2,x):
         if x % y == 0:
             break
     else:
         print(x)
-"""
 
+
+"""
 #判斷質數
 #Solution_1
 x = int(input("請輸入數字: "))
@@ -26,7 +27,7 @@ for n in range(2,x):
         print(str(x) + "不是質數")
         break
 else: print(str(x) + "是質數")
-
+"""
 #Solution_2
 '''
 x = int(input("請輸入數字: "))
@@ -65,3 +66,5 @@ for x in range(1,51):
         print(x,"是3的倍數")
     else: print(x,"不是3的倍數")
 '''
+
+

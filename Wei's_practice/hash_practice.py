@@ -1,4 +1,4 @@
-"""
+'''
 letters = "cdefghijlmnoqstuvxz"
 # def reverseHash(hash):
 #     print(hash) # write the code here
@@ -14,14 +14,7 @@ print(hash("justdoit"))
 
 
 # print(reverseHash(6933552791181934))
-"""
-"""
-x = 1
-while x <= 10:
-    print("*" * x)
-    x = x + 1
-
-"""
+'''
 
 letters = "cdefghijlmnoqstuvxz"
 
