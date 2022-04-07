@@ -9,6 +9,7 @@ def getTitle(url):
         bs_obj = BeautifulSoup(html.text, features="html.parser")
         boards = bs_obj.findAll('a', {'class': 'board'})
 
+
         for ele in boards:
             board_link = 'https://www.ptt.cc' + ele.get('href')
             print('board link: ', board_link)
@@ -20,7 +21,6 @@ def getTitle(url):
 
             topic = bs_obj.find('div', {'class': 'title'})
             topic_link = 'https://www.ptt.cc' + topic.find('a').get('href')
-            print(topic_link)
             html = requests.get(topic_link, headers=my_headers)
             article_obj = BeautifulSoup(html.text, features="html.parser")
             article_title = article_obj.findAll('span', {'class': 'article-meta-value'})[2].text
