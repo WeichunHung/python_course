@@ -9,10 +9,12 @@ def getLink(url):
     box = bs_obj.findAll('div', {'class': 'block block_w'})
 
     for ele in box:
-        topics = ele.findAll('h3')
-        print(topics)
-        topic_link = 'https://sports.ettoday.net' + topics.find('a').get('href')
-        print(topic_link)
+        h3 = ele.findAll('h3')
+        print(h3)
+
+        for ele_1 in h3:
+            topic_link = 'https://sports.ettoday.net' + ele_1.find('a').get('href')
+            print(topic_link)
 
 
 
