@@ -11,9 +11,8 @@ def getLink(url):
     for ele in box:
         topics = ele.findAll('h3')
         print(topics)
-        topic_link = 'https://www.ettoday.net' + topics.find('a').get('href')
+        topic_link = 'https://sports.ettoday.net' + topics.find('a').get('href')
         print(topic_link)
-
 
 
 
