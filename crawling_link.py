@@ -10,7 +10,6 @@ def getLink(url):
     print("============================1=================================")
     for x_1 in box:
         topic = x_1.findAll('h3')
-
         for x_2 in topic:
             topic_title = x_2.find('a').get('title')
             print(topic_title)
