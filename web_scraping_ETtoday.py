@@ -1,38 +1,25 @@
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import re
+import ssl
 
-pages =set()
+pages = set()
 def getLinks(pageUrl):
     global pages
-    html = urlopen("http://en.wikipedia.org"+pageUrl)
-    bsObj = BeautifulSoup(html)
-    for link in bsObj.findAll("a", href=re.compile("^(/wiki/)")):
+    ssl._create_default_https_context = ssl._create_unverified_context
+    html = urlopen("https://sports.ettoday.net"+pageUrl)
+    bsObj = BeautifulSoup(html, features="html.parser")
+    for link in bsObj.findAll("a", href=re.compile("^(/news/)")):
         if 'href' in link.attrs:
             if link.attrs['href'] not in pages:
                 newPage = link.attrs['href']
-                print(newPage)
+                html = urlopen("https://sports.ettoday.net" + newPage)
+                newPage_Obj = BeautifulSoup(html, features="html.parser")
+                # newTitle = newPage_Obj.select('#sport > div.wrapper > div.container > div > div.c1 > article > div > header > h1')
+                newTitle = newPage_Obj.find('h1', {'class': 'title'} )
+                print(newTitle.text)
+
+                print("https://sports.ettoday.net" + newPage)
                 pages.add(newPage)
                 getLinks(newPage)
 getLinks("")
-
-
-
-
-
-# pages = set()
-# def NextPage_links
-#     global pages
-#     html = requests.get()
-#     bs_obj = BeautifulSoup(html.text, features="html.parser")
-#     box = bs_obj.findAll
-#         html = requests.get("https://sports.ettoday.net" + url)
-#         bs_obj = BeautifulSoup(html)
-#         for link in bs_obj.findAll('a', href=re.compile('^(/wiki/)')):
-#             if link.attrs['href'] not in pages: #新頁面
-#                 newPage = link.attrs['href']
-#                 print(newPage)
-#                 pages.add(newPage)
-#                 getLinks(newPage)
-#
-# NextPage_links('')
