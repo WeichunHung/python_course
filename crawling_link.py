@@ -7,11 +7,12 @@ def getLink(url):
     html = requests.get(url)
     bs_obj = BeautifulSoup(html.text, features="html.parser")
     box = bs_obj.findAll('div', {'class': 'block block_w'})
-    print("============================1=================================")
+
     for x_1 in box:
         topic = x_1.findAll('h3')
         for x_2 in topic:
             topic_title = x_2.find('a').get('title')
+            print("============================1=================================")
             print(topic_title)
             topic_link = 'https://sports.ettoday.net' + x_2.find('a').get('href')
             print(topic_link)
@@ -30,10 +31,10 @@ def getLink(url):
                 for y_2 in recomm_news_topic:
                     recomm_news_title = y_2.find('a').get('title')
                     print(recomm_news_title)
-                    recomm_news_link = 'https://sports.ettoday.net' + y_2.find('a').get('href')
+                    recomm_news_link = y_2.find('a').get('href')
                     print(recomm_news_link)
                     my_set.add(recomm_news_title)
 
-            print(my_set)
+                print(my_set)
 
 getLink("https://sports.ettoday.net/sport-category/%E6%A3%92%E7%90%83")
