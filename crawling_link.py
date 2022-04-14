@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 from urllib.error import HTTPError
-
+my_set = set()
 def getLink(url):
 
     html = requests.get(url)
@@ -32,6 +32,8 @@ def getLink(url):
                     print(recomm_news_title)
                     recomm_news_link = 'https://sports.ettoday.net' + y_2.find('a').get('href')
                     print(recomm_news_link)
+                    my_set.add(recomm_news_title)
 
+            print(my_set)
 
 getLink("https://sports.ettoday.net/sport-category/%E6%A3%92%E7%90%83")
