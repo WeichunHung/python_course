@@ -41,16 +41,16 @@ for n in range(2, x+1):
         break
 '''
 
-# n = int(input("請輸入數字:"))
-# x = 2
-#
-# while x < n:
-#     if n % x == 0:
-#         print("不是質數")
-#         break
-#     x = x + 1
-# if x == n:
-#     print("是質數")
+n = int(input("請輸入數字:"))
+x = 2
+
+while x < n:
+    if n % x == 0:
+        print("不是質數")
+        break
+    x = x + 1
+if x == n:
+    print("是質數")
 
 #1-50的3的倍數
 '''

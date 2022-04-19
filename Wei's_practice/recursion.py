@@ -5,5 +5,4 @@ def func(num):
     num -= 1
     return func(num)
 
-
 func(10)

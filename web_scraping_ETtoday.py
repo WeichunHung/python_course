@@ -7,7 +7,7 @@ def getLinks(pageUrl):
     global pages
     html = requests.get("https://sports.ettoday.net"+pageUrl)
     bsObj = BeautifulSoup(html.text, features="html.parser")
-    for link in bsObj.findAll("a", href=re.compile("^(\/news\/)")):
+    for link in bsObj.findAll("a", href=re.compile("^/news")):
         if 'href' in link.attrs:
             if link.attrs['href'] not in pages:
                 newPage = link.attrs['href']
