@@ -7,7 +7,7 @@ def getLink(url):
     html = requests.get(url)
     bs_obj = BeautifulSoup(html.text, features="html.parser")
     box = bs_obj.findAll('div', {'class': 'block block_w'})
-    print(box)
+
     for x_1 in box:
         topic = x_1.findAll('h3')
         for x_2 in topic:

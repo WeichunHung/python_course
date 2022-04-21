@@ -6,3 +6,4 @@ def func(num):
     return func(num)
 
 func(10)
+
