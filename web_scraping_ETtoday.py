@@ -26,14 +26,16 @@ def getLinks(pageUrl):
                 newsDate = newPage_Obj.select('time.date')
                 for date in newsDate:
                     date = date.text
-                    print(date)
-
-                    news_list = {}
-                    news_list.update({'Title': title})
-                    print(news_list)
-
-                print(newPage)
+                # newsTag = newPage_Obj.select('div.tag a')
+                # for tag in newsTag:
+                #     tag = tag.text
+                Page_dict = {'Title': title, 'Date': date, 'Link': newPage}
+                print(Page_dict)
                 pages.add(newPage)
                 getLinks(newPage)
+                # news_list = []
+                # news_list.append(Page_dict)
+                # print(news_list)
 
 getLinks("https://sports.ettoday.net")
+

@@ -15,7 +15,6 @@ try:
     #     print(x)
     # myquery = {'$or':[{'name': 'Tom'},{'name': 'Wei'},{'name': 'Henry'}]}
     # newvalues = {'$set': {'age': '27'}}
-
     # my_collection.update_many(myquery, newvalues)  #Update
     # my_collection.delete_many({}) #Delete
     my_collection.delete_one({'name':'Henry', 'age': 18}) #Delete
