@@ -42,7 +42,7 @@ def getLinks(pageUrl):
                     newPage_Obj = BeautifulSoup(html.text, features="html.parser")
                     dateObj = newPage_Obj.find('time').get('datetime')
                     string = str(dateObj)
-                    newsDate = parse(string[:19])
+                    newsDate = parse(string[:19]) #把格式slice成和parse一樣才能判斷式比較
                     if newsDate > oneDay:
                         title = newPage_Obj.select('h1.title')[0].text
                         date = newPage_Obj.select('time.date')[0].text
