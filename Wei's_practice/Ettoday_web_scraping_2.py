@@ -18,6 +18,7 @@ print('Present Time:',now)
 print('Posts from:',oneDay)
 
 pages = set()
+newsList = list()
 
 def prefix_str(str):
     return str.strip().replace(u'\u3000', u' ')
@@ -26,7 +27,6 @@ def prefix_str(str):
 def getLinks(pageUrl):
 
     try:
-        global pages
         html = requests.get(pageUrl)
         bsObj = BeautifulSoup(html.text, features="html.parser")
 
@@ -41,18 +41,20 @@ def getLinks(pageUrl):
                     html = requests.get(newPage)
                     newPage_Obj = BeautifulSoup(html.text, features="html.parser")
                     dateObj = newPage_Obj.find('time').get('datetime')
-                    string = str(dateObj)
-                    newsDate = parse(string[:19]) #把格式slice成和parse一樣才能判斷式比較
-                    if newsDate > oneDay:
+                    if parse(dateObj).replace(tzinfo=None) > oneDay:
                         title = newPage_Obj.select('h1.title')[0].text
                         date = newPage_Obj.select('time.date')[0].text
                         if len(newPage_Obj.select('div.tag a')) > 0:
-                            tag = newPage_Obj.select('div.tag a')[0].text
+                            for t in newPage_Obj.select('div.tag a'):
+                                tag =t.text
+                            print(tag)
+
                         else:
                             tag = 'None'
                         Page_dict = {'Title': prefix_str(title), 'Date': prefix_str(date), 'Link': prefix_str(newPage),
                                      'Tag': prefix_str(tag)}
                         print(Page_dict)
+                        newsList.append(Page_dict)
                         pages.add(link.attrs['href'])
                         getLinks(newPage)
                     else:
@@ -62,5 +64,24 @@ def getLinks(pageUrl):
     else:
         getLinks("https://sports.ettoday.net")
 
-
 getLinks("https://sports.ettoday.net")
+
+print(newsList)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
