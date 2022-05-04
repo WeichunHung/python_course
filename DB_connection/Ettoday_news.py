@@ -45,7 +45,7 @@ def getLinks(pageUrl):
                         title = newPage_Obj.select('h1.title')[0].text
                         date = newPage_Obj.select('time.date')[0].text
                         if len(newPage_Obj.select('div.tag a')) > 0:
-                            tag = newPage_Obj.select('div.tag a')[0].text
+                            tag = ', '.join(t.text for t in newPage_Obj.select('div.tag a'))
                         else:
                             tag = 'None'
                         Page_dict = {'Title': prefix_str(title), 'Date': prefix_str(date), 'Link': prefix_str(newPage),

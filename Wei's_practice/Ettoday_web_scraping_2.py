@@ -45,10 +45,10 @@ def getLinks(pageUrl):
                         title = newPage_Obj.select('h1.title')[0].text
                         date = newPage_Obj.select('time.date')[0].text
                         if len(newPage_Obj.select('div.tag a')) > 0:
-                            for t in newPage_Obj.select('div.tag a'):
-                                tag =t.text
-                            print(tag)
-
+                            tag = ', '.join(t.text for t in newPage_Obj.select('div.tag a'))
+                            # for t in newPage_Obj.select('div.tag a'):
+                            #     tag = ', '.join(t.text)
+                            # print(tag)
                         else:
                             tag = 'None'
                         Page_dict = {'Title': prefix_str(title), 'Date': prefix_str(date), 'Link': prefix_str(newPage),
@@ -67,10 +67,6 @@ def getLinks(pageUrl):
 getLinks("https://sports.ettoday.net")
 
 print(newsList)
-
-
-
-
 
 
 
