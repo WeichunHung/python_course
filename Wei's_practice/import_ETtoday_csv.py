@@ -20,8 +20,7 @@ print('Present Time:',now)
 print('Posts from:',oneDay)
 
 pages = set()
-newsList = list()
-
+rows = []
 
 def prefix_str(str):
     return str.strip().replace(u'\u3000', u' ')
@@ -56,12 +55,10 @@ def getLinks(pageUrl):
                         else:
                             newTags = 'None'
 
-                        Page_dict = {'Title': prefix_str(title), 'Date': prefix_str(date), 'Link': prefix_str(newPage),
-                                     'Tag': prefix_str(newTags)}
-                        print(Page_dict)
-                        newsList.append(Page_dict)
                         pages.add(link.attrs['href'])
                         getLinks(newPage)
+                        x = prefix_str(title),prefix_str(date),prefix_str(newPage),prefix_str(newTags)
+                        rows.append(x)
 
                     else:
                         return
@@ -71,20 +68,17 @@ def getLinks(pageUrl):
         getLinks("https://sports.ettoday.net")
 
 getLinks("https://sports.ettoday.net")
+print(rows)
 
+import csv
 
+csvFile = open('/Users/wei-chunhung/Desktop/Ettoday_webScraping.csv','w+', newline='')
 
+try:
+    writer = csv.writer(csvFile)
+    writer.writerow(('Title','Date','Link','Tag'))
+    for i in rows:
+        writer.writerow((i))
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+finally:
+    csvFile.close()

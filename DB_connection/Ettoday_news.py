@@ -1,3 +1,4 @@
+'''
 import requests
 from bs4 import BeautifulSoup
 import re  # p.23
@@ -63,7 +64,8 @@ def getLinks(pageUrl):
 
 getLinks("https://sports.ettoday.net")
 
-print(newsList)
+# print(newsList)
+'''
 
 from pymongo import MongoClient
 import certifi
@@ -75,7 +77,7 @@ my_collection = mydb['Ettoday_SportNews']
 
 try:
 
-    my_collection.insert_many(newsList)
+    # my_collection.insert_many(newsList)
     for x in my_collection.find():
         print(x)
 
