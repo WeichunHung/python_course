@@ -15,9 +15,9 @@ import csv
 # last_time = parse('2022-04-27 22:08:00+08:00')
 
 now = parse(str(datetime.now()))
-oneDay = now - relativedelta.relativedelta(days=1)
+oneWeek = now - relativedelta.relativedelta(days=7)
 print('Present Time:',now)
-print('Posts from:',oneDay)
+print('Posts from:',oneWeek)
 
 pages = set()
 newsList = list()
@@ -44,7 +44,7 @@ def getLinks(pageUrl):
                     html = requests.get(newPage)
                     newPage_Obj = BeautifulSoup(html.text, features="html.parser")
                     dateObj = newPage_Obj.find('time').get('datetime')
-                    if parse(dateObj).replace(tzinfo=None) > oneDay:
+                    if parse(dateObj).replace(tzinfo=None) > oneWeek:
                         title = newPage_Obj.select('h1.title')[0].text
                         date = newPage_Obj.select('time.date')[0].text
                         if len(newPage_Obj.select('div.tag a')) > 0:
