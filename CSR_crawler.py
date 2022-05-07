@@ -24,8 +24,6 @@ async def main():
 
         priceList = []
         for p in PageObj.findAll('div',{'class':'prod_info'}):
-            product = p.find('a').get('href')
-            productList.append(product)
             price = p.find('span',{'class':'value'}).text
             priceList.append(int(price))
 
