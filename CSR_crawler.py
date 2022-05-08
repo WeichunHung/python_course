@@ -22,13 +22,15 @@ async def main():
         pageHTML = await page.content()
         PageObj = BeautifulSoup(pageHTML, features="html.parser")
 
-        priceList = []
+        itemList = []
         for p in PageObj.findAll('div',{'class':'prod_info'}):
             price = p.find('span',{'class':'value'}).text
-            priceList.append(int(price))
+            itemDict = {}
+            itemDict['Price']= int(price)
+            # itemDict['Product']= name
+            itemList.append(itemDict)
 
-        priceList.sort()
-        print(priceList[:3])
+        print(itemList)
         # price = bsObj.select('span#PriceTotal')[0].text
         # print(price)
         # put the extracted prices into the set
